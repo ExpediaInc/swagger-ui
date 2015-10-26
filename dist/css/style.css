@@ -190,7 +190,8 @@ hr {
   font-weight: 500;
   line-height: 1.1;
 }
-.footer {
+.swagger-footer {
+  padding-bottom: 10px;
   display: none;
 }
 .swagger-section .swagger-ui-wrap h2 {
