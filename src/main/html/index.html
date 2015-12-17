@@ -64,6 +64,8 @@
             hljs.highlightBlock(e)
           });
 
+          // Automatically expand APIs depending number of operations
+          expandOperations(swaggerApi, swaggerUi);
         },
         onFailure: function(data) {
           log("Unable to Load SwaggerUI");
@@ -80,6 +82,18 @@
       function log() {
         if ('console' in window) {
           console.log.apply(console, arguments);
+        }
+      }
+
+      function expandOperations(swaggerApi, swaggerUi) {
+        var totalOperations = 0;
+        swaggerApi.apisArray.forEach(function(api) {
+          totalOperations += api.operationsArray.length;
+        });
+        if (totalOperations < 5) {
+          swaggerUi.expandAll();
+        } else if (totalOperations < 10) {
+          swaggerUi.listAll();
         }
       }
   });
